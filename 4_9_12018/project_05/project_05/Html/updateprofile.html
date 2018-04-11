@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NetFLORIST</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/app.js"></script>
+  
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+  
+
+</head>
+<body ng-app="myApp" ng-controller="updateprofilecontroller">
+    <form name="myForm" method="post" ng-if="name != ''">
+        <div class="container">
+            <header>
+                <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="75" height="75"></a></p>
+                <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                <h1>NETFLORIST</h1>
+            </header>
+        </div>
+
+        <div ng-init="varImage = '../Gallery/'" >
+
+            <div class="container">
+                <div class="col-md-6 col-md-offset-1">
+
+
+                    <!--<table class="table table-striped">
+                        <tr>
+                            <td><b>lastname</b></td>
+                            <td><b>fistname</b></td>
+                            <td><b>password</b></td>
+                            <td><b>contact</b></td>
+                            <td><b>address</b></td>
+                            <td><b>Id</b></td>
+                        </tr>
+                        <tr ng-repeat="prod in person ">
+                            <td>{{prod.lastname}}</td>
+                            <td>{{prod.firstname}}</td>
+                            <td>{{prod.password}}</td>
+                            <td>{{prod.contact}}</td>
+                            <td>{{prod.address}}</td>
+                            <td>{{prod.Id}}</td>
+                        </tr>
+                    </table>-->
+
+
+                    <button style="float:left" href="" ng-click="editperson(person.id)">Editprofile </button>
+                    <br />
+                    <b>address:</b><br />
+                    <input type="text" ng-model="newperson.address" />
+                    <br />
+                    <b>custemail:</b><br />
+                    <input type="text" ng-model="newperson.custemail" />
+                    <br />
+                    <b>lastname:</b><br />
+                    <input type="text" ng-model="newperson.lastname" />
+                    <br />
+                    <b>password:</b><br />
+                    <input type="text" ng-model="newperson.password" />
+                    <br />
+                    <b>contact:</b><br />
+                    <input type="text" ng-model="newperson.contact" />
+                    <br />
+                    <b>firstname:</b><br />
+                    <input type="text" ng-model="newperson.firstname" />
+                    <br />
+                    <button type="button" ng-click="updatePerson()">UpdateProfile</button>
+
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+

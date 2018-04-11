@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Registration</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["fname"].value;
+            if (x == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+
+            var checkLastNm = document.forms["myForm"]["lname"].value;
+            if (checkLastNm == "") {
+                alert("Lastname must be filled out");
+                return false;
+            }
+
+            var checkContact = document.forms["myForm"]["contact"].value;
+            if (checkContact == "") {
+                alert("Contact must be filled out");
+                return false;
+            }
+
+            var checkAddress = document.forms["myForm"]["address"].value;
+            if (checkAddress == "") {
+                alert("Address must be filled out");
+                return false;
+            }
+
+            var checkEmail = document.forms["myForm"]["email"].value;
+            if (checkEmail == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+
+            var checkPassword = document.forms["myForm"]["passwordNew"].value;
+            if (checkPassword == "") {
+                alert("Password must be filled out");
+                return false;
+            }
+
+            var checkPasswordCormfirm = document.forms["myForm"]["passwordOld"].value;
+            if (checkPasswordCormfirm == "") {
+                alert("Password confimation must be filled out");
+                return false;
+            }
+
+            if (checkPassword != checkPasswordCormfirm) {
+                alert("password does not match");
+                return false;
+            }
+
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+<body ng-controller="registraticontroller">
+
+    <div class="container">
+
+        <header>
+            <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+            <a style="float:right" href="customerlogin.html" > login</a>
+            <h1>NETFLORIST</h1>
+        </header>
+    </div>
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <form name="myForm" onsubmit="return validateForm()" method="post">
+                <br />
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                Firstname:          <input type="text" name="fname" ng-model="newuser.firstname" placeholder="firstname" /><br />
+                Lastname:           <input type="text" name="lname" ng-model="newuser.lastname" placeholder="lastname" /><br />
+                Contact:            <input type="text" name="contact" ng-model="newuser.contact" placeholder="contact" /><br />
+                address:            <input type="text" name="address" ng-model="newuser.address" placeholder="address" /><br />
+                Email:              <input type="text" name="email" ng-model="newuser.custemail" placeholder="custemail" /><br />
+                Password:           <input type="password" name="passwordNew" ng-model="newuser.password" placeholder="password" /><br />
+                Re-type Password:   <input type="password" name="passwordOld" placeholder="Re-type Password" /><br />
+
+                <button ng-click="save()" class="signupbtn"> Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

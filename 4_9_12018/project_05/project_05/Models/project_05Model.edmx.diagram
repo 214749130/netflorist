@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb50030f49574836b6a84316add5e8ae" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="project_05DBmdfModel.addToCart" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.admin" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.adminProduct" Width="1.5" PointX="6.125" PointY="2" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.customer" Width="1.5" PointX="3.375" PointY="1.25" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.deliveryDetail" Width="1.5" PointX="8.75" PointY="4.125" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.driver" Width="1.5" PointX="0.625" PointY="8.375" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.paymentCash" Width="1.5" PointX="6.875" PointY="9" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.paymentCreditCard" Width="1.5" PointX="4.75" PointY="9" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.paymentEFT" Width="1.5" PointX="2.625" PointY="9" />
+        <EntityTypeShape EntityType="project_05DBmdfModel.supplier" Width="1.5" PointX="0.75" PointY="4.625" />
+        <AssociationConnector Association="project_05DBmdfModel.FK_addToCart_adminProducts" />
+        <AssociationConnector Association="project_05DBmdfModel.FK_paymentCash_addToCart" />
+        <AssociationConnector Association="project_05DBmdfModel.FK_paymentCreditCard_addToCart" />
+        <AssociationConnector Association="project_05DBmdfModel.FK_paymentEFT_addToCart" />
+        <AssociationConnector Association="project_05DBmdfModel.FK_deliveryDetails_customer" ManuallyRouted="false" >
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

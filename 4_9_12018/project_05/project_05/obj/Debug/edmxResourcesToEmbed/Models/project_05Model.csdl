@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_05DBmdfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="project_05DBmdfEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="addToCarts" EntityType="project_05DBmdfModel.addToCart" />
+    <EntitySet Name="admins" EntityType="project_05DBmdfModel.admin" />
+    <EntitySet Name="adminProducts" EntityType="project_05DBmdfModel.adminProduct" />
+    <EntitySet Name="customers" EntityType="project_05DBmdfModel.customer" />
+    <EntitySet Name="deliveryDetails" EntityType="project_05DBmdfModel.deliveryDetail" />
+    <EntitySet Name="drivers" EntityType="project_05DBmdfModel.driver" />
+    <EntitySet Name="paymentCashes" EntityType="project_05DBmdfModel.paymentCash" />
+    <EntitySet Name="paymentCreditCards" EntityType="project_05DBmdfModel.paymentCreditCard" />
+    <EntitySet Name="paymentEFTs" EntityType="project_05DBmdfModel.paymentEFT" />
+    <EntitySet Name="suppliers" EntityType="project_05DBmdfModel.supplier" />
+    <AssociationSet Name="FK_addToCart_adminProducts" Association="project_05DBmdfModel.FK_addToCart_adminProducts">
+      <End Role="adminProduct" EntitySet="adminProducts" />
+      <End Role="addToCart" EntitySet="addToCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paymentCash_addToCart" Association="project_05DBmdfModel.FK_paymentCash_addToCart">
+      <End Role="addToCart" EntitySet="addToCarts" />
+      <End Role="paymentCash" EntitySet="paymentCashes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paymentCreditCard_addToCart" Association="project_05DBmdfModel.FK_paymentCreditCard_addToCart">
+      <End Role="addToCart" EntitySet="addToCarts" />
+      <End Role="paymentCreditCard" EntitySet="paymentCreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paymentEFT_addToCart" Association="project_05DBmdfModel.FK_paymentEFT_addToCart">
+      <End Role="addToCart" EntitySet="addToCarts" />
+      <End Role="paymentEFT" EntitySet="paymentEFTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_deliveryDetails_customer" Association="project_05DBmdfModel.FK_deliveryDetails_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="deliveryDetail" EntitySet="deliveryDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="addToCart">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productprice" Type="Double" Nullable="false" />
+    <Property Name="productpicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="productcategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productquantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="prodId" Type="Int32" />
+    <NavigationProperty Name="adminProduct" Relationship="project_05DBmdfModel.FK_addToCart_adminProducts" FromRole="addToCart" ToRole="adminProduct" />
+    <NavigationProperty Name="paymentCashes" Relationship="project_05DBmdfModel.FK_paymentCash_addToCart" FromRole="addToCart" ToRole="paymentCash" />
+    <NavigationProperty Name="paymentCreditCards" Relationship="project_05DBmdfModel.FK_paymentCreditCard_addToCart" FromRole="addToCart" ToRole="paymentCreditCard" />
+    <NavigationProperty Name="paymentEFTs" Relationship="project_05DBmdfModel.FK_paymentEFT_addToCart" FromRole="addToCart" ToRole="paymentEFT" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminemail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="adminProduct">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productprice" Type="Double" Nullable="false" />
+    <Property Name="productpicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="productcategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productqty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="addToCarts" Relationship="project_05DBmdfModel.FK_addToCart_adminProducts" FromRole="adminProduct" ToRole="addToCart" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custemail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="deliveryDetails" Relationship="project_05DBmdfModel.FK_deliveryDetails_customer" FromRole="customer" ToRole="deliveryDetail" />
+  </EntityType>
+  <EntityType Name="deliveryDetail">
+    <Key>
+      <PropertyRef Name="deliveryid" />
+    </Key>
+    <Property Name="deliveryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="deliverydate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recipientname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recipientsurname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phonenumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="streetname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="areaname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="province" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="additionalinformation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerid" Type="Int32" />
+    <NavigationProperty Name="customer" Relationship="project_05DBmdfModel.FK_deliveryDetails_customer" FromRole="deliveryDetail" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="driver">
+    <Key>
+      <PropertyRef Name="driverId" />
+    </Key>
+    <Property Name="driverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="driveremail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="paymentCash">
+    <Key>
+      <PropertyRef Name="payId" />
+    </Key>
+    <Property Name="payId" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Double" />
+    <Property Name="productid" Type="Int32" />
+    <NavigationProperty Name="addToCart" Relationship="project_05DBmdfModel.FK_paymentCash_addToCart" FromRole="paymentCash" ToRole="addToCart" />
+  </EntityType>
+  <EntityType Name="paymentCreditCard">
+    <Key>
+      <PropertyRef Name="cardnumber" />
+    </Key>
+    <Property Name="cardnumber" Type="Int32" Nullable="false" />
+    <Property Name="cardholdername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cardexpirydate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cvvnumber" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" />
+    <NavigationProperty Name="addToCart" Relationship="project_05DBmdfModel.FK_paymentCreditCard_addToCart" FromRole="paymentCreditCard" ToRole="addToCart" />
+  </EntityType>
+  <EntityType Name="paymentEFT">
+    <Key>
+      <PropertyRef Name="cardnumber" />
+    </Key>
+    <Property Name="cardnumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bankname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="transitroutingno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bankaccountno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productid" Type="Int32" />
+    <NavigationProperty Name="addToCart" Relationship="project_05DBmdfModel.FK_paymentEFT_addToCart" FromRole="paymentEFT" ToRole="addToCart" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="supplieremail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact" Type="Int32" Nullable="false" />
+    <Property Name="oderid" Type="Int32" />
+    <Property Name="custumerid" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_addToCart_adminProducts">
+    <End Type="project_05DBmdfModel.adminProduct" Role="adminProduct" Multiplicity="0..1" />
+    <End Type="project_05DBmdfModel.addToCart" Role="addToCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adminProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="addToCart">
+        <PropertyRef Name="prodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paymentCash_addToCart">
+    <End Type="project_05DBmdfModel.addToCart" Role="addToCart" Multiplicity="0..1" />
+    <End Type="project_05DBmdfModel.paymentCash" Role="paymentCash" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="addToCart">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="paymentCash">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paymentCreditCard_addToCart">
+    <End Type="project_05DBmdfModel.addToCart" Role="addToCart" Multiplicity="0..1" />
+    <End Type="project_05DBmdfModel.paymentCreditCard" Role="paymentCreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="addToCart">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="paymentCreditCard">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paymentEFT_addToCart">
+    <End Type="project_05DBmdfModel.addToCart" Role="addToCart" Multiplicity="0..1" />
+    <End Type="project_05DBmdfModel.paymentEFT" Role="paymentEFT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="addToCart">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="paymentEFT">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_deliveryDetails_customer">
+    <End Type="project_05DBmdfModel.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="project_05DBmdfModel.deliveryDetail" Role="deliveryDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="deliveryDetail">
+        <PropertyRef Name="customerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

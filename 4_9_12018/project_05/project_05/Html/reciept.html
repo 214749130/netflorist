@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title>Reciept</title>
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+
+    <style>
+        div {
+            background-color: #ead5ea;
+            width: 250px;
+            height: auto;
+            border: 10px solid #25c6cf;
+            padding: 25px;
+            margin: 25px;
+        }
+
+            /*header border*/
+            div.container {
+                width: 100%;
+                border: 1px solid pink;
+            }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" >
+    <form>
+        <div class="container">
+            <header>
+                <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                <h1>NETFLORIST</h1>
+            </header>
+        </div>
+
+        <div class="container">
+            <h1>successful</h1>
+            <br\>
+                <button class="btn btn-info btn-lg" onclick="myFunction()">Print reciept</button>
+                <div ng-controller="cartcontroller">
+                    <h2>NETFLORIST</h2>
+                    <h5>Date: </h5><p id="date1"></p>
+                    <h5>Time: </h5><p id="time1"></p>
+                    <p><b>PRODUCTS :</b> {{discriptionProducts()}}</p>
+                    <p><b>QUANTITY :</b>{{QTYproducts()}}</p>
+                    <p><b>TOT PRICE:</b>{{ total() | currency:'&#8377;':2}}</p>
+                </div>
+
+        </div>
+
+            <script>
+                document.getElementById("date1").innerHTML = Date().substring(0, 15);
+                document.getElementById("time1").innerHTML = Date().substring(16, 25);
+                function myFunction() {
+                    window.print();
+                }
+            </script>
+
+    </form>
+</body>
+</html>
+
+
+
+

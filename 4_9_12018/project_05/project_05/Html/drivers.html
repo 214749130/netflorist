@@ -1,0 +1,258 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NetFLORIST</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+    <script src="../Scripts/jquery-3.0.0.min.js"></script>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+  
+
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+
+
+        /*barmenu*/
+        div.scrollmenu {
+            background-color: pink;
+            overflow: auto;
+            white-space: nowrap;
+            text-align: right;
+        }
+
+            div.scrollmenu a {
+                display: inline-block;
+                color: white;
+                text-align: right;
+                padding: 12px;
+                text-decoration: none;
+            }
+
+                div.scrollmenu a:hover {
+                    background-color: #777;
+                }
+    </style>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["productname"].value;
+            if (x == "") {
+                alert("productname must be filled out");
+                return false;
+            }
+
+            var checkproductprice = document.forms["myForm"]["productprice"].value;
+            if (checkproductprice == "") {
+                alert("productprice must be filled out");
+                return false;
+            }
+
+            var checkproductcategory = document.forms["myForm"]["productcategory"].value;
+            if (checkproductcategory == "") {
+                alert("productcategory must be filled out");
+                return false;
+            }
+
+            var checkproductpicture = document.forms["myForm"]["productpicture"].value;
+            if (checkproductpicture == "") {
+                alert("productpicture must be filled out");
+                return false;
+            }
+
+
+
+        }
+    </script>
+
+</head>
+<body ng-app="myApp" ng-controller="managedrivercontroller" >
+
+        <form name="myForm" onsubmit="return validateForm()" method="post" ng-if="name != ''">
+
+            <div class="container">
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="75" height="75"></a></p>
+                    <p><a style="float:right" href="" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                </header>
+                <br />
+                <div class="scrollmenu">
+                    <a href="/Html/adminproducts.html">Products</a>
+                    <a href="/Html/drivers.html">Drivers</a>
+                    <a href="/Html/admins.html">Admins</a>
+                    <a href="/Html/supplierAdmin.html">Suppllier</a>
+                </div>
+            </div>
+
+
+            <div ng-init="varImage = '../Gallery/'">
+                <div class="container">
+
+                    <p><a><img border="0" src="../Gallery/Asserts/admin2.jpg" width="1110" height="200"></a></p>
+
+                    <div class="col-md-6 col-md-offset-1">
+                        <br />
+                        <h2>Drivers Information</h2>
+                        <label>Search driver</label>
+                        <p><input type="text" ng-model="search"></p>
+
+                        add driver
+                        <p><a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2"><img border="0" src="../Gallery/Icon/addproduct.png" width="50" height="50"></a></p>
+                        <br /><br />
+                        <table class="table table-striped">
+                            <tr>
+                                <td><b>driverId</b></td>
+                                <td><b>driveremail</b></td>
+                                <td><b>password</b></td>
+                                <td><b>firstname</b></td>
+                                <td><b>surname</b></td>
+                                <td><b>contact</b></td>
+                                <td><b></b></td>
+                                <td><b>ManagingProducts</b></td>
+                            </tr>
+                            <tr ng-repeat="x in drivers | filter:search">
+                                <td>{{x.driverId}}</td>
+                                <td>{{x.driveremail}}</td>
+                                <td>{{x.password}}</td>
+                                <td><b> {{x.firstname}}</b></td>
+                                <td><b> {{x.surname}}</b></td>
+                                <td><b> {{x.contact}}</b></td>
+                                <td><b></b></td>
+                                <td>
+                                    edit
+                                    <p><a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editDrivers(x.driverId)"><img border="0" src="../Gallery/Icon/edit.png" width="20" height="20"></a></p>
+                                    delete
+                                    <p><a class="btn btn-info btn-lg" ng-click="deleteDrivers(x.driverId)"><img border="0" alt="W3Schools" src="../Gallery/Icon/delete.jpg" width="20" height="20"></a></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="myModal2" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Adding Driver</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <b>AUTO ID:</b>
+                                        <input type="text" ng-model="newdriver.driverId" disabled placeholder=" AUTO ID" />
+                                        <br />
+                                        <b>Driver email:</b>
+                                        <input type="text" ng-model="newdriver.driveremail" required placeholder="driver email" />
+                                        <br />
+                                        <b>Password:</b>
+                                        <input type="text" ng-model="newdriver.password" required placeholder="password" />
+                                        <br />
+                                        <b>Surname:</b>
+                                        <input type="text" ng-model="newdriver.surname" required placeholder="surname" />
+                                        <br />
+                                        <b>Contact:</b>
+                                        <input type="text" ng-model="newdriver.contact" required placeholder="contact" />
+                                        <br />
+                                        <b>Firstname:</b>
+                                        <input type="text" ng-model="newdriver.firstname" required placeholder="firstname" />
+                                        <br /><br />
+                                        <button type="button" value="AddProduct" ng-model="DisplaySave" ng-click="createDrivers()"> AddProduct</button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">EIDT Driver</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b>AUTO ID:</b>
+                                        <input type="text" ng-model="newdriver.driverId" disabled />
+                                        <br />
+                                        <b>Driver email:</b>
+                                        <input type="text" ng-model="newdriver.driveremail" required placeholder="" />
+                                        <br />
+                                        <b>Password:</b>
+                                        <input type="text" ng-model="newdriver.password" required placeholder="" />
+                                        <br />
+                                        <b>Surname:</b>
+                                        <input type="text" ng-model="newdriver.surname" required placeholder="" />
+                                        <br />
+                                        <b>Contact:</b>
+                                        <input type="text" ng-model="newdriver.contact" required placeholder="" />
+                                        <br />
+                                        <b>Firstname:</b>
+                                        <input type="text" ng-model="newdriver.firstname" required placeholder="" />
+                                        <br /><br />
+                                        <button type="button" ng-click="updateDrivers()">Update Driver</button>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+      
+
+
+</body>
+</html>
+

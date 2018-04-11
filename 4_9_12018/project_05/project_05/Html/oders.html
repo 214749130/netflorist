@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Orders</title>
+
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+
+    <style>
+        div {
+            background-color: peachpuff;
+            width: 100px;
+            height: auto;
+            border: 2px solid pink;
+            padding: 25px;
+            margin: 25px;
+        }
+
+            /*header border*/
+            div.container {
+                width: 100%;
+                border: 1px solid pink;
+            }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp"  ng-controller="oderscontroller">
+    <div class="container">
+       
+        <div class="container">
+            <header>
+                <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="75" height="75"></a></p>
+                <p><a style="float:right" href="" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                <h1>NETFLORIST</h1>
+            </header>
+            <br />
+            <p><a><img border="0" src="../Gallery/Asserts/driver1.jpg" width="1100" height="200"></a></p>
+        </div>
+
+        <br />
+        <h1>ORDERS</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Drivers Oders</h2>
+
+            <table rules="all">
+                <tr>
+                    <th><b>Address Details</b></th>
+                    <!--<th><b>Order Details</b></th>-->
+                </tr>
+                <tr ng-repeat="prod in products">
+                    <td>
+                        ODER N0:
+                        <br />
+                        {{prod.deliveryid}}
+                        <br />
+                        PROVINCE:
+                        <br />
+                        {{prod.province}}
+                        <br />
+                        CITY:
+                        <br />
+                        {{prod.city}}
+                        <br />
+                        AREA NAME:
+                        <br />
+                        {{prod.areaname}}
+                        <br />
+                        STREET NAME:
+                        <br />
+                        {{prod.streetname}}
+                        <br />
+                        NAME:
+                        <br />
+                        {{prod.recipientname}}
+                        <br />
+                        SURNAME:
+                        <br />
+                        {{prod.recipientsurname}}<br />
+                        CONTACT NO:
+                        <br />
+                        {{prod.phonenumber}}
+                        <br />
+                        ODER DATE:
+                        <br />
+                        {{prod.deliverydate}}
+                        <br />
+                        ADDITIONAL INFOR:
+                        <br />
+                        {{prod.additionalinformation}}
+                        <!--<br />-->
+                        <div>
+                            <a href="" ng-click="deleteProducts(prod.deliveryid) " class="btn btn-info btn-lg">MAKE Delivery</a>
+                        </div>
+                         <br /> <br /> <br />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

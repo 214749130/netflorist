@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>CustProducs</title>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/app.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content */
+        .modal-content {
+            background-color: #0094ff;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        /* The Close Button */
+        .close {
+            color: #4cff00;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+
+        /*header border*/
+        div.container {
+            width: 800%;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" class="col-md-6 col-md-offset-3" ng-controller="customerproductscontroller" ng-init="varImage = '../Gallery/Products/'">
+    
+    <form >
+        <div class="container">
+            <div class="container">
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                    <p><a style="float:right" href="" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                    </header>
+            </div>
+
+            <div class="container">
+
+                <p><a style="float:right" href="updateprofile.html"><img border="0" src="../Gallery/Icon/editprofile.png" width="100" height="100"></a></p>
+
+
+                <p style="float:right"> edit profile</p>
+                <br />
+
+                <h2>Available Items </h2>
+                <label>Search Products</label>
+                <p><input type="text" ng-model="search"></p>
+                <br />
+                <img />
+                <p><a style="float:right" href="basket.html"><img border="0" src="../Gallery/Icon/cart.jpg" width="100" height="100"></a></p>
+                <p style="float:right"> CART </p>
+                <br /><br />
+
+                <button class="btn btn-info btn-lg" id="addToCartButton">AddTOCART</button>
+                <label>you have selected ***<mark>{{newproduct.productname}} </mark>***</label>
+
+                <br /><br />
+                <table class="table table-striped" ng-if="name != ''">
+                    <tr></tr>
+                    <td ng-repeat="prod in products|limitTo :3:0 | filter:search">
+                        <img ng-src="{{varImage + prod.productpicture}}"><br />
+                        <br />
+                        <b><font color="blue">{{prod.productname}}</font></b>        <br />
+                        <b><font color="blue">From R{{prod.productprice}}</font></b> <br />
+                        <b><font color="blue"> {{prod.productcategory}}</font></b>   <br />
+                        <p>Next delivery: Today<p\>                                  <br />
+                        <p><a ng-click="editProducts(prod.productid)"><img src="../Gallery/Icon/select.png" width="50" height="50"><font color="blue">select</font></a></p>
+                    </td>
+                </table>
+
+
+                <table class="table table-striped" ng-if="name != ''">
+                    <tr></tr>
+                    <td ng-repeat="prod in products|limitTo :3:3 | filter:search">
+                        <img ng-src="{{varImage + prod.productpicture}}"><br />
+                        <br />
+                        <b><font color="blue">{{prod.productname}}</font></b>        <br />
+                        <b><font color="blue">From R{{prod.productprice}}</font></b> <br />
+                        <b><font color="blue"> {{prod.productcategory}}</font></b>   <br />
+                        <p>Next delivery: Today<p\>                                  <br />
+                        <p><a ng-click="editProducts(prod.productid)"><img src="../Gallery/Icon/select.png" width="50" height="50"><font color="blue">select</font></a></p>
+                    </td>
+                </table>
+
+                <table class="table table-striped" ng-if="name != ''">
+                    <tr></tr>
+                    <td ng-repeat="prod in products|limitTo :3:6 | filter:search">
+                        <img ng-src="{{varImage + prod.productpicture}}"><br />
+                        <br />
+                        <b><font color="blue">{{prod.productname}}</font></b>        <br />
+                        <b><font color="blue">From R{{prod.productprice}}</font></b> <br />
+                        <b><font color="blue"> {{prod.productcategory}}</font></b>   <br />
+                        <p>Next delivery: Today<p\>                                  <br />
+                        <p><a ng-click="editProducts(prod.productid)"><img src="../Gallery/Icon/select.png" width="50" height="50"><font color="blue">select</font></a></p>
+                    </td>
+                </table>
+
+
+                <table class="table table-striped" ng-if="name != ''">
+                    <tr></tr>
+                    <td ng-repeat="prod in products|limitTo :3:9 | filter:search">
+                        <img ng-src="{{varImage + prod.productpicture}}"><br />
+                        <br />
+                        <b><font color="blue">{{prod.productname}}</font></b>        <br />
+                        <b><font color="blue">From R{{prod.productprice}}</font></b> <br />
+                        <b><font color="blue"> {{prod.productcategory}}</font></b>   <br />
+                        <p>Next delivery: Today<p\>                                  <br />
+                        <p><a ng-click="editProducts(prod.productid)"><img src="../Gallery/Icon/select.png" width="50" height="50"><font color="blue">select</font></a></p>
+                    </td>
+                </table>
+
+            </div>
+
+
+
+            <div class="container">
+                <div id="myModalCart" class="modal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h2>ADD PRODUCT TO CART</h2>
+                                <span class="close">&times;</span>
+                                <button type="button" value="Update" ng-model="DisplayUpdate" ng-click="createProducts()" class="close">AddToCart</button>
+                            </div>
+                            <div class="modal-body">
+                                <b>AUTO ID     :</b><br />
+                                <input type="text" ng-model="newproduct.productid" placeholder="Nothing IS seleted" required />
+                                <br />
+                                <b>productname:</b><br />
+                                <input type="text" name="productname" id="productname" ng-model="newproduct.productname" placeholder="Nothing IS seleted" required/>
+                                <br />
+                                <b>productprice:</b><br />
+                                <input type="text" name="productprice" id="productprice" ng-model="newproduct.productprice" placeholder="Nothing IS seleted"  required/>
+                                <br />
+                                <b>productquantity:</b><br />
+                                <input type="number" min="1" ng-model="newproduct.productquantity" required/>
+                                <br />
+                            </div>
+                            <div class="modal-footer">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Get the modal
+            var modal = document.getElementById('myModalCart');
+            // Get the button that opens the modal
+            var btn = document.getElementById("addToCartButton");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+    </form>
+</body>
+</html>
+
+

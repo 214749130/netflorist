@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Delivery Details</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 3px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        /*header border*/
+        div.container {
+            width: 800%;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+<body ng-controller="deliverydetailscontroller">
+
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        <div class="container">
+            <div class="container">
+
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                    <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                </header>
+            </div>
+
+            <div class="container">
+                <div class="col-md-6 col-md-offset-3">
+                    <br />
+                    <h1>Delivery details</h1>
+                    <!--deliveryid:              <input type="text" name="deliveryid" ng-model="newdetails.deliveryid" placeholder="deliveryid" /><br />-->
+                    deliverydate:            <input type="text" name="deliverydate" ng-model="newdetails.deliverydate" placeholder="deliverydate"  required/><br />
+                    recipientname:           <input type="text" name="recipientname" ng-model="newdetails.recipientname" placeholder="recipientname" required/><br />
+                    recipientsurname:        <input type="text" name="recipientsurname" ng-model="newdetails.recipientsurname" placeholder="recipientsurname" required /><br />
+                    phonenumber:             <input type="text" name="phonenumber" ng-model="newdetails.phonenumber" placeholder="phonenumber" required/><br />
+                    streetname:              <input type="text" name="streetname" ng-model="newdetails.streetname" placeholder="streetname" required/><br />
+                    areaname:                <input type="text" name="areaname" ng-model="newdetails.areaname" placeholder="areaname" required/><br />
+                    city:                    <input type="text" name="city" ng-model="newdetails.city" placeholder="city" required/><br required/>
+                    province:                <input type="text" name="province" ng-model="newdetails.province" placeholder="province" required/><br />
+                    additionalinformation:   <input type="text" name="additionalinformation" ng-model="newdetails.additionalinformation" placeholder="additionalinformation" required/><br />
+
+                    <button ng-click="save()" class="sentDeliverydetails"> Send Delivery Details</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
+
+
+
+
+

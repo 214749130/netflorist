@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="project_05DBmdfModelStoreContainer" CdmEntityContainer="project_05DBmdfEntities">
+    <EntitySetMapping Name="addToCarts">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.addToCart">
+        <MappingFragment StoreEntitySet="addToCart">
+          <ScalarProperty Name="prodId" ColumnName="prodId" />
+          <ScalarProperty Name="productquantity" ColumnName="productquantity" />
+          <ScalarProperty Name="productcategory" ColumnName="productcategory" />
+          <ScalarProperty Name="productpicture" ColumnName="productpicture" />
+          <ScalarProperty Name="productprice" ColumnName="productprice" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="adminemail" ColumnName="adminemail" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminProducts">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.adminProduct">
+        <MappingFragment StoreEntitySet="adminProducts">
+          <ScalarProperty Name="productqty" ColumnName="productqty" />
+          <ScalarProperty Name="productcategory" ColumnName="productcategory" />
+          <ScalarProperty Name="productpicture" ColumnName="productpicture" />
+          <ScalarProperty Name="productprice" ColumnName="productprice" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="custemail" ColumnName="custemail" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deliveryDetails">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.deliveryDetail">
+        <MappingFragment StoreEntitySet="deliveryDetails">
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="additionalinformation" ColumnName="additionalinformation" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="areaname" ColumnName="areaname" />
+          <ScalarProperty Name="streetname" ColumnName="streetname" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="recipientsurname" ColumnName="recipientsurname" />
+          <ScalarProperty Name="recipientname" ColumnName="recipientname" />
+          <ScalarProperty Name="deliverydate" ColumnName="deliverydate" />
+          <ScalarProperty Name="deliveryid" ColumnName="deliveryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="drivers">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.driver">
+        <MappingFragment StoreEntitySet="driver">
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="driveremail" ColumnName="driveremail" />
+          <ScalarProperty Name="driverId" ColumnName="driverId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymentCashes">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.paymentCash">
+        <MappingFragment StoreEntitySet="paymentCash">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payId" ColumnName="payId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymentCreditCards">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.paymentCreditCard">
+        <MappingFragment StoreEntitySet="paymentCreditCard">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="cvvnumber" ColumnName="cvvnumber" />
+          <ScalarProperty Name="cardexpirydate" ColumnName="cardexpirydate" />
+          <ScalarProperty Name="cardholdername" ColumnName="cardholdername" />
+          <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paymentEFTs">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.paymentEFT">
+        <MappingFragment StoreEntitySet="paymentEFT">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="bankaccountno" ColumnName="bankaccountno" />
+          <ScalarProperty Name="transitroutingno" ColumnName="transitroutingno" />
+          <ScalarProperty Name="bankname" ColumnName="bankname" />
+          <ScalarProperty Name="cardnumber" ColumnName="cardnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="project_05DBmdfModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="custumerid" ColumnName="custumerid" />
+          <ScalarProperty Name="oderid" ColumnName="oderid" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="supplieremail" ColumnName="supplieremail" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Basket</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <!--<script src="../Scripts/scriptBasket.js"></script>-->
+    <script src="../Scripts/app.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="cartcontroller"  >
+
+
+        <div class="container"  ng-if="name != ''">
+            <div class="container">
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                    <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                </header>
+            </div>
+            <div class="col-md-6 col-md-offset-3" ng-init="varImage = '../Gallery/Products/'">
+                    <div>
+
+                        <br />
+                        <h2>{{name+"'s"}} CART</h2>
+                        <div>
+                            <p><a href="confirmoder.html" class="btn btn-info btn-lg">CONFIRM ODER</a></p>
+                            <!--<p><a href="makepayment.html"  class="btn btn-info btn-lg" >PAYMENTS</a></p>  <p id="demo"> </p>-->
+                        </div>
+
+                        <table class="table table-striped" align="center">
+                            <tr>
+                                <td><b></b></td>
+                                <td><b>Productname</b></td>
+                                <td><b> ProductPrice</b></td>
+                                <td><b> ProductQuantity</b></td>
+                                <td><b> ProductPicture</b></td>
+                                <td><b> ProductCategory</b></td>
+                                <td><b>cancel</b></td>
+                            </tr>
+                            <tr ng-repeat="prod in products | filter:search">
+                                <td></td>
+                                <td>{{prod.productname}}</td>
+                                <td>{{prod.productprice}}</td>
+                                <td>{{prod.productquantity}}</td>
+                                <td><img ng-src="{{varImage + prod.productpicture}}"></td>
+                                <td><b>{{prod.productcategory}}</b></td>
+                                <td>
+                                    <br /> <br /> <br /> <br /> <br />
+                                    <a href="" ng-click="deleteProducts(prod.productid) " class="btn btn-info btn-lg">cancel</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>            
+            </div>
+        </div>
+
+</body>
+</html>

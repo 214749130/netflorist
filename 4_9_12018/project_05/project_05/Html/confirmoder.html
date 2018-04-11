@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Corfirm Oder</title>
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <!--<script src="../Scripts/scriptBasket.js"></script>-->
+    <script src="../Scripts/app.js"></script>
+
+    <style>
+        div {
+            background-color: #ffffff;
+            width: auto;
+            height: auto;
+            border: 3px solid pink;
+            padding: 25px;
+            margin: 25px;
+        }
+
+            /*header border*/
+            div.container {
+                width: 100%;
+                border: 1px solid pink;
+            }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp">
+    <form ng-if="name != ''">
+        <div class="container">
+            <div class="container">
+
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                    <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                </header>
+            </div>
+            <p><a href="makepayment.html" class="btn btn-info btn-lg">PAYMENTS</a></p>
+            <div ng-controller="cartcontroller" ng-init="varImage = '../Gallery/Products/'">
+                <p><b>TOTAL PRICE:=</b>  {{ total() | currency:"R "}}</p>
+                <p><b>Products SELECTED:=</b> {{discriptionProducts()}}</p>
+
+                            <div ng-repeat="prod in products">
+                                <b>SELECTED PRODUCT</b><br />
+                                {{prod.productname}}<br />
+                                <p>tot item(s) price: {{prod.productprice * prod.productquantity}}</p><br />
+                                <img ng-src="{{varImage + prod.productpicture}}">
+                            </div> 
+                <br /><br />
+                <p><a href="" class="btn btn-info btn-lg"></a></p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

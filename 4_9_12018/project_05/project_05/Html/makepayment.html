@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>MAKE PAYMENT</title>
+
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/app.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body >
+
+    <form ng-if="name != ''">
+        <div class="container">
+
+            <div class="container">
+                <header>
+                    <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+                    <p><a style="float:right" href="home.html" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+                    <h1>NETFLORIST</h1>
+                </header>
+            </div>
+            <img  />
+            <p><a><img border="0" src="../Gallery/Asserts/payment_methods_all_highres.png" width="1000" height="200"></a></p>
+
+            <h2>PAYMENTS</h2>
+            <br />
+            <p><a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalCREDITCARD">CREDIT CARD</a></p>
+            <p><a h class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalCASH">CASH</a></p>
+            <p><a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalEFT">EFT</a></p>
+            <!-- Modal -->
+            <div class="modal fade" id="myModalCREDITCARD" role="dialog" ng-controller="paywithcreditcardcontroller">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <br />
+                                    <h1>Make Payment WITH CREDITCART</h1>
+
+                                    cardnumber:          <input type="text" name="fname" ng-model="paywithcreditcard.cardnumber" placeholder="cardnumber" /><br />
+                                    cardholdername:      <input type="text" name="lname" ng-model="paywithcreditcard.cardholdername" placeholder="cardholdername" /><br />
+                                    cardexpirydate:      <input type="text" name="contact" ng-model="paywithcreditcard.cardexpirydate" placeholder="cardexpirydate" /><br />
+                                    cvvnumber:           <input type="text" name="address" ng-model="paywithcreditcard.cvvnumber" placeholder="cvvnumber" /><br />
+                                    <button ng-click="save()" class="signupbtn"> Pay</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<p><a style="float:left" href="reciept.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/receipt.png" width="100" height="100"></a></p>
+            reciept-->
+            <br /><br /><br /><br /><br /><br />
+
+            <!--<p><a href="reciept.html" class="btn btn-info btn-lg">Reciept</a></p>-->
+        </div>
+    </form>
+
+
+    <form>
+        <div class="modal fade" id="myModalEFT" role="dialog" ng-controller="paywithEFTcontroller">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="col-md-6 col-md-offset-3">
+                                <br />
+                                <h1>Make Payment WITH EFT</h1>
+                                Card Number:              <input type="text" name="cardnumber" ng-model="paywithET.cardnumber" placeholder=" card number" /><br />
+                                Transit Routing No :       <input type="text" name="transitroutingno" ng-model="paywithET.transitroutingno" placeholder="Bank Account No" /><br />
+                                Bank Name:     <input type="text" name="bankname" ng-model="paywithET.bankname" placeholder="bank name" /><br />
+                                Bank Account No:        <input type="text" name="bankaccountno" ng-model="paywithET.bankaccountno" placeholder="Bank Account No" /><br />
+                                <button ng-click="paywithEFT()" class="Pay">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form>
+        <div class="modal fade" id="myModalCASH" role="dialog" ng-controller="paywithcashcontroller">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="col-md-6 col-md-offset-3">
+                                <br />
+                                <h1>PAY WITH CASH</h1>
+                                <button ng-click="paywithcash()" class="CASH">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+    </form>
+
+
+  
+</body>
+</html>

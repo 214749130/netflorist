@@ -1,0 +1,205 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NetFLORIST</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["productname"].value;
+            if (x == "") {
+                alert("productname must be filled out");
+                return false;
+            }
+
+            var checkproductprice = document.forms["myForm"]["productprice"].value;
+            if (checkproductprice == "") {
+                alert("productprice must be filled out");
+                return false;
+            }
+
+            var checkproductcategory = document.forms["myForm"]["productcategory"].value;
+            if (checkproductcategory == "") {
+                alert("productcategory must be filled out");
+                return false;
+            }
+
+            var checkproductpicture = document.forms["myForm"]["productpicture"].value;
+            if (checkproductpicture == "") {
+                alert("productpicture must be filled out");
+                return false;
+            }
+
+
+
+        }
+    </script>
+
+</head>
+<body ng-app="myApp" ng-controller="adminproductscontroller" >
+
+    <div class="container">
+
+        <header>
+            <p><a style="float:left" href="home.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/home.jpg" width="50" height="50"></a></p>
+            <p><a style="float:right" href="" ng-click="logout()"><img img src="../Gallery/Icon/logout.png" width="50" height="50"></a></p>
+
+            <h1>NETFLORIST</h1>
+        </header>
+    </div>
+    <div ng-init="varImage = '../Gallery/'">
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <div class="container">
+          <br />
+                <p><a><img border="0"  src="../Gallery/Asserts/supplier1.jpg"  width="1110" height="200"></a></p>
+
+                <div class="col-md-6 col-md-offset-1">
+
+
+
+                    <br />
+                    <h2>Products Information</h2>
+                    <label>Search Products</label>
+                    <p><input type="text" ng-model="search"></p>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <td><b>Productname</b></td>
+                            <td><b>productcategory</b></td>
+                            <td><b>productquantity</b></td>
+
+                            <td style="color:deepskyblue;"><b>...Status...</b></td>
+                            <td><b>Supplyproducts</b></td>
+                            <td><b></b></td>
+                            <!--is like editing admin products-->
+                        </tr>
+                        <tr ng-repeat="prod in products | filter:search">
+                            <td>{{prod.productname}}</td>
+                            <td><b> {{prod.productcategory}}</b></td>
+                            <td><b> {{prod.productqty}}</b></td>
+                            <td ng-if="prod.productqty <= 1 ">
+                                <p style="color:red;">NOT AVAILABLE  </p>
+                            </td>
+                            <td ng-if="prod.productqty > 1 ">
+                                <p style="color:greenyellow;">AVAILABLE  </p>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editProducts(prod.productid)">SUPPLY</a>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">SUPPLY PRODUCTS</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <br />
+                                    <b>AUTO ID     :</b>
+                                    <input type="text" ng-model="newproduct.productid" placeholder="Auto ID" disabled />
+                                    <br />
+                                    <b>Productname:</b>
+                                    <input type="text" name="productname" id="productname" ng-model="newproduct.productname" required placeholder="productname" disabled />
+                                    <br />
+                                    <b>Productprice:</b>
+                                    <input type="text" name="productprice" id="productprice" ng-model="newproduct.productprice" required placeholder="productprice" disabled />
+                                    <br />
+                                    <p><font color="blue"> <h5>Productquantity:</h5></font></p>
+
+                                    <select ng-model="newproduct.productqty">
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                    </select>
+                                    <br />
+                                    <input type="text" name="productquantity" id="productquantity" ng-model="newproduct.productqty" required placeholder="productquantity" />
+                                    <br />
+                                    <b>
+                                        productpicture :<br />
+                                        <input type="file" name="filename" id="myFileUpdate" accept="image/*" disabled>
+                                    </b>
+                                    <input type="text" name="productpicture" id="imageUpdate" ng-model="newproduct.productpicture" required placeholder="productpicture" disabled />
+                                    <br />
+                                    <button type="button" value="Update" ng-model="DisplayUpdate" ng-click="updateProducts()">Supply Product</button>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.getElementById('myFileUpdate').onchange = uploadOnChange1
+                        function uploadOnChange1() {
+                            var imageUpdate = this.value;
+                            var lastIndex = imageUpdate.lastIndexOf("\\");
+                            if (lastIndex >= 0) {
+                                imageUpdate = imageUpdate.substring(lastIndex + 1);
+                            }
+                            document.getElementById('imageUpdate').value = imageUpdate;
+                        }
+                    </script>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../Scripts/jquery-3.0.0.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,230 @@
+﻿/// <reference path="angular.js" />
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/app.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+    <style>
+
+        /*leftmenu*/
+        body {
+            margin: 0;
+            color: #ff006e;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 18%;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+            li a.active {
+                background-color: #ff00dc;
+                color: white;
+            }
+
+            li a:hover:not(.active) {
+                background-color: #ff006e;
+                color: white;
+            }
+
+        /*picture gallery*/
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .responsive {
+                width: 100%;
+            }
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        /*barmenu*/
+        div.scrollmenu {
+            background-color: pink;
+            overflow: auto;
+            white-space: nowrap;
+            text-align: right;
+        }
+
+            div.scrollmenu a {
+                display: inline-block;
+                color: white;
+                text-align: right;
+                padding: 12px;
+                text-decoration: none;
+            }
+
+                div.scrollmenu a:hover {
+                    background-color: #777;
+                }
+
+        /*slide show*/
+        .mySlides {
+            display: none;
+        }
+
+
+
+        /*header border*/
+        div.container {
+            width: 100%;
+            border: 1px solid pink;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: pink;
+            clear: left;
+            text-align: center;
+        }
+
+        /*link to page down (search) */
+        #link:before {
+            padding-top: 50px;
+            display: block;
+            content: "";
+        }
+    </style>
+
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="reg1.html">Register</a></li>
+        <li><a href="#link">Searching</a></li>
+        <li><a href="menu.html">Browsing Menu</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+    </ul>
+    <div style=" margin-left:18%; padding:1px 16px; height:1000px">
+
+        <div class="container">
+            <header>
+                <h1>NETFLORIST</h1>
+            </header>
+        </div>
+  
+        <br />
+        <div class="scrollmenu">
+            <a href="/Html/adminlogin.html">Adminlogin</a>
+            <a href="/Html/customerlogin.html">CustomerLogin</a>
+            <a href="/Html/driverlogin.html">DriverLogin</a>
+            <a href="/Html/supplierlogin.html">SupplierLogin</a>
+        </div>
+
+        <h2 class="w3-center">Special</h2>
+        <div class="w3-content w3-section" style="max-width:700px">
+            <img class="mySlides" src="../Gallery/Home/beer1.jpeg" width="1100" height="500">
+            <img class="mySlides" src="../Gallery/Home/beer2.jpg" swidth="1100" height="500">
+            <img class="mySlides" src="../Gallery/Home/cake3.jpeg" width="1100" height="500" />
+            <img class="mySlides" src="../Gallery/Home/cake1.jpg" width="1100" height="500">
+            <img class="mySlides" src="../Gallery/Home/flowers1.jpg" width="1100" height="500">
+            <img class="mySlides" src="../Gallery/Home/flowers2.jpg" width="1100" height="500">
+            <img class="mySlides" src="..//Gallery/Home/jewellery2.jpg" width="1100" height="500">
+            <img class="mySlides" src="../Gallery/Home/jewelry1.jpg" width="1100" height="500">
+        </div>
+        <div id="link"></div>
+        <h2>AVAILABLE ITEMS</h2>
+        <div class="container" ng-app="myApp" ng-controller="custHomeProductsController" ng-init="varImage = '../Gallery/Products/'">
+            <label></label>
+            <p>Search Products : <input type="text" ng-model="search"></p>
+
+            <table class="table table-striped">
+                <tr>
+                    <td><b></b></td>
+                    <td><b>Product Name</b></td>
+                    <td><b>Product Price</b></td>
+                    <td><b>Product Category</b></td>
+                    <td><b>Product Images</b></td>
+                    <td><b>Oder Items</b></td>
+                </tr>
+                <tr ng-repeat="prod in products | filter:search">
+                    <td></td>
+                    <td>{{prod.productname}}</td>
+                    <td>{{prod.productprice}}</td>
+
+                    <td><b> {{prod.productcategory}}</b></td>
+                    <td><img ng-src="{{varImage+prod.productpicture}}"></td>
+                    <td>
+                        <br /> <br /> <br /> <br /> <br />
+                        select
+                        <p><a href="/Html/customerlogin.html"><img border="0" alt="W3Schools" src="../Gallery/Icon/select.png" width="50" height="50"></a></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 3000); // Change image every 3 seconds
+        }
+    </script>
+
+</body>
+</html>
+

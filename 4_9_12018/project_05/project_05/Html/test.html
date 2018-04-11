@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NetFLORIST</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/app.js"></script>
+
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="tes">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <form>
+                    <br />
+                    <h1>Sign Up</h1>
+                    <p>Please fill in this form to create an account.</p>
+                    cardnumber:          <input type="text" name="fname" ng-model="paywithcreditcard.cardnumber" placeholder="cardnumber" /><br />
+                    cardholdername:      <input type="text" name="lname" ng-model="paywithcreditcard.cardholdername" placeholder="cardholdername" /><br />
+                    cardexpirydate:      <input type="text" name="contact" ng-model="paywithcreditcard.cardexpirydate" placeholder="cardexpirydate" /><br />
+                    cvvnumber:           <input type="text" name="address" ng-model="paywithcreditcard.cvvnumber" placeholder="cvvnumber" /><br />
+                    <button ng-click="save()" class="signupbtn"> Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('MyApp', [])
+        app.controller('MyController', function ($scope, $window) {
+            $scope.Customers = [
+                { Name: "John Hammond", Country: "United States" },
+                { Name: "Mudassar Khan", Country: "India" },
+                { Name: "Suzanne Mathews", Country: "France" },
+                { Name: "Robert Schidner", Country: "Russia" }
+            ];
+            $scope.GetDetails = function (index) {
+                var name = $scope.Customers[index].Name;
+                var country = $scope.Customers[index].Country;
+                $window.alert("Name: " + name + "\nCountry: " + country);
+            };
+        });
+    </script>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+            <tbody ng-repeat="m in Customers">
+                <tr>
+                    <td>{{m.Name}}</td>
+                    <td>{{m.Country}}</td>
+                    <td><input type="button" value="Get Details" ng-click="GetDetails($index)" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>-->
+
+
+
+
+
+
+
+
